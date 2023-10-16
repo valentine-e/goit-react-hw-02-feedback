@@ -26,9 +26,11 @@ class App extends React.Component {
 
   handleFeedback = option => {
     this.setState(prevState => {
-      return {
-        [option]: prevState[option] + 1,
-      };
+      if (option) {
+        return {
+          [option]: prevState[option] + 1,
+        };
+      }
     });
   };
 
@@ -72,13 +74,13 @@ class App extends React.Component {
         <h3>Please,leave your feedback</h3>
         {/* <FeedbackOptions options={} onLeaveFeedback={}></FeedbackOptions> */}
         <div>
-          <button type="button" onClick={this.handleFeedback}>
+          <button type="button" onClick={this.handleFeedback()}>
             Good
           </button>
-          <button type="button" onClick={this.handleFeedback}>
+          <button type="button" onClick={this.handleFeedback()}>
             Neutral
           </button>
-          <button type="button" onClick={this.handleFeedback}>
+          <button type="button" onClick={this.handleFeedback()}>
             Bad
           </button>
         </div>
