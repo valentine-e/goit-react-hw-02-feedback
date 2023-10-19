@@ -26,31 +26,11 @@ class App extends React.Component {
 
   handleFeedback = option => {
     this.setState(prevState => {
-      if (option) {
-        return {
-          [option]: prevState[option] + 1,
-        };
-      }
+      return {
+        [option]: prevState[option] + 1,
+      };
     });
   };
-
-  // handleGoodFeedback = () => {
-  //   this.setState(prevState => ({
-  //     good: prevState.good + 1,
-  //   }));
-  // };
-
-  // handleNeutralFeedback = () => {
-  //   this.setState(prevState => ({
-  //     neutral: prevState.neutral + 1,
-  //   }));
-  // };
-
-  // handleBadFeedback = () => {
-  //   this.setState(prevState => ({
-  //     bad: prevState.bad + 1,
-  //   }));
-  // };
 
   countTotalFeedback = () => {
     return this.state.good + this.state.bad + this.state.neutral;
@@ -68,30 +48,48 @@ class App extends React.Component {
 
   render() {
     const { good, bad, neutral } = this.state;
+    const { handleFeedback, countTotalFeedback } = this;
 
     return (
       <div>
         <h3>Please,leave your feedback</h3>
-        {/* <FeedbackOptions options={} onLeaveFeedback={}></FeedbackOptions> */}
         <div>
-          <button type="button" onClick={this.handleFeedback()}>
+          <button
+            type="button"
+            onClick={() => {
+              handleFeedback('good');
+            }}
+          >
             Good
           </button>
-          <button type="button" onClick={this.handleFeedback()}>
+          <button
+            type="button"
+            onClick={() => {
+              handleFeedback('neutral');
+            }}
+          >
             Neutral
           </button>
-          <button type="button" onClick={this.handleFeedback()}>
+          <button
+            type="button"
+            onClick={() => {
+              handleFeedback('bad');
+            }}
+          >
             Bad
           </button>
         </div>
-
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        />
+        {countTotalFeedback() ? (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        ) : (
+          <p>There is no feedback yet!</p>
+        )}
       </div>
     );
   }
