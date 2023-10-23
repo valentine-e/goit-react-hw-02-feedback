@@ -1,5 +1,19 @@
 import styled from 'styled-components';
 
+const getButtonColor = props => {
+  switch (props.children) {
+    case 'good':
+      return 'darkseagreen';
+    case 'neutral':
+      return 'darkgray';
+    case 'bad':
+      return 'coral';
+    default:
+      return null;
+  }
+
+}
+
 export const ButtonBox = styled.div`
   display: flex;
   gap: 30px;
@@ -17,58 +31,14 @@ export const Button = styled.button`
   width: 100px;
   transition: all 0.4s;
   border: 1px solid
-    ${props => {
-      switch (props.children) {
-        case 'good':
-          return 'darkseagreen';
-        case 'neutral':
-          return 'darkgray';
-        case 'bad':
-          return 'coral';
-        default:
-          return null;
-      }
-    }};
+    ${getButtonColor};
 
-  background-color: ${props => {
-    switch (props.children) {
-      case 'good':
-        return 'darkseagreen';
-      case 'neutral':
-        return 'darkgray';
-      case 'bad':
-        return 'coral';
-      default:
-        return null;
-    }
-  }};
+  background-color: ${getButtonColor};
 
   &:hover {
     background-color: white;
     border: 1px solid
-      ${props => {
-        switch (props.children) {
-          case 'good':
-            return 'darkseagreen';
-          case 'neutral':
-            return 'darkgray';
-          case 'bad':
-            return 'coral';
-          default:
-            return null;
-        }
-      }};
-    color: ${props => {
-      switch (props.children) {
-        case 'good':
-          return 'darkseagreen';
-        case 'neutral':
-          return 'darkgray';
-        case 'bad':
-          return 'coral';
-        default:
-          return null;
-      }
-    }};
+      ${getButtonColor};
+    color: ${getButtonColor};
   }
 `;
