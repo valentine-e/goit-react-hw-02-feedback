@@ -5,5 +5,6 @@ export const SectionBox = styled.div`
 `
 
 export const SectionTitle = styled.h3`
+font-weight: 400;
 text-align: center;
 `
