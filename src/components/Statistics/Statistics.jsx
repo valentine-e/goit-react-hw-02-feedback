@@ -1,14 +1,17 @@
 import React from 'react';
+import { StatsBox, StatInfo } from './Statistics.style,';
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
   return (
-    <div>
-      <span>Good:{good}</span>
-      <span>Neutral:{neutral}</span>
-      <span>Bad:{bad}</span>
-      <span>Total:{total}</span>
-      <span>Positive feedback:{positivePercentage}</span>
-    </div>
+    <StatsBox>
+      <StatInfo stat="good">Good: {good}</StatInfo>
+      <StatInfo stat="neutral">Neutral: {neutral}</StatInfo>
+      <StatInfo stat="bad">Bad: {bad}</StatInfo>
+      <StatInfo stat="total">Total: {total}</StatInfo>
+      <StatInfo stat="positive">
+        Positive feedback: {positivePercentage}
+      </StatInfo>
+    </StatsBox>
   );
 };
 

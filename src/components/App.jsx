@@ -3,6 +3,7 @@ import Statistics from './Statistics/Statistics';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
 import Section from './Section/Section';
+import { PageBox } from './App.styled';
 
 class App extends React.Component {
   state = {
@@ -42,7 +43,7 @@ class App extends React.Component {
     } = this;
 
     return (
-      <div>
+      <PageBox>
         <Section title="Please,leave your feedback">
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
@@ -63,7 +64,7 @@ class App extends React.Component {
             <Notification message="There is no feedback yet" />
           )}
         </Section>
-      </div>
+      </PageBox>
     );
   }
 }

@@ -1,9 +1,11 @@
+import { SectionBox, SectionTitle } from './Section.styles';
+
 const Section = ({ title, children }) => {
   return (
-    <div>
-      <h3>{title}</h3>
+    <SectionBox>
+      <SectionTitle>{title}</SectionTitle>
       {children}
-    </div>
+    </SectionBox>
   );
 };
 
